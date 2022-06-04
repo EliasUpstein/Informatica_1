@@ -1,0 +1,1 @@
+double convertTemp(double temp, char dest);
