@@ -23,7 +23,7 @@ int main()
     fflush(stdin);
     scanf(" %c", &conver);
 
-    while (conver != 'c' || conver != 'f')
+    while (conver != 'c' && conver != 'f')
     {
         printf("Ingrese una escala válida:\n");
         fflush(stdin);
