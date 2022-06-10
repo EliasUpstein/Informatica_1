@@ -22,6 +22,9 @@ int main()
     fflush(stdin);
     fgets(s, N, stdin);
 
+    printf("%d\n", sizeof(s));
+    printf("%d\n", sizeof(t));
+
     my_strcpy(t, s);
 
     printf("El valor de s es:\n");
@@ -38,11 +41,23 @@ void my_strcpy (char *t, const char *s)
     printf("%d\n", sizeof(s));
     printf("%d\n", sizeof(t));
 
+    // char se[] = s;
+    // char te[] = t;
+
     if (sizeof(t) != sizeof(s))
-        printf("Los Strings tiene diferente tamaño\n");
+        printf("Los Strings tienen diferente tamaño\n");
     else
     {
         for (int i = 0; i < sizeof(t); i++)     //Copia toda la cadena (incluso después del NULL)
             t[i] = s[i];
     }
 }
+
+/* Error:  (Presentacion clase 6, diapositiva: columna 1 fila 7)
+char string[32] = "hello, world";
+char *ptr = string;
+
+sizeof (string)
+Devuelve: 32
+sizeof (ptr) // Si estamos en una máquina de 64bits (con punteros de 8 bytes)
+Devuelve: 8 */
