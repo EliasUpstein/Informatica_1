@@ -9,13 +9,19 @@ Nota: ¿Donde deben tomarse los recaudos para que el puntero destino posea la me
 en su función especifique donde y como se debe salvar esta situación, mediante un comentario en el
 encabezado de su programa fuente. */
 
+//No se puede conocer el tamaño del vector en la fucnion ya que es pasado como puntero
+//Para evitar el error se deben declarar ambos vectores de igual longitud o modificar el prototipo para
+//pasarle a la función el tamaño del vector
+
+
 #include <stdio.h>
-//#include <string.h>
+#include <string.h>
 
 #define N 20
 #define M 25
 
 void my_strcat (char *t, const char *s);
+int my_strlen(const char *);
 
 int main()
 {
@@ -36,15 +42,26 @@ int main()
     return 0;
 }
 
-//Probar después de corregir el 6
 void my_strcat (char *t, const char *s)
-{   
+{
+    int aux = my_strlen(t);
     //Si el largo del vector apuntado es menor a la longitud de la cadena t + la cadena s
-    if (sizeof(t) < (strlen(t) + strlen(s)))
-        printf("Los Strings tienen diferente tamaño\n");
-    else
-    {
-        for (int i = strlen(t); i < strlen(s); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
-            t[i] = s[i-strlen(t)];      //Guardo el valor desplazado, 0-1-2-3-etc
-    }
+    // if (sizeof(t) < (strlen(t) + strlen(s)))
+    //     printf("Los Strings tienen diferente tamaño\n");
+    // else
+    // {
+        for (int i = aux; i < my_strlen(s); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
+            t[i] = s[i-aux];      //Guardo el valor desplazado, 0-1-2-3-etc
+    // }
 }
+
+int my_strlen(const char *string)
+{
+    int i = 0;
+
+    while (string[i] != NULL)   //Mientras el caracter sea distinto del fin del string
+        i++;
+    
+    return i;   //Contabiliza el \n
+}
+
