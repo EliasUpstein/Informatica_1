@@ -10,7 +10,7 @@ en su función especifique donde y como se debe salvar esta situación, mediante
 encabezado de su programa fuente. */
 
 #include <stdio.h>
-//#include <string.h>
+#include <string.h>
 
 #define N 20
 #define M 25
@@ -22,9 +22,13 @@ int main()
     char s[N];
     char t[M];
 
-    printf("Ingrese secuencia:\n");
+    printf("Ingrese primer secuencia:\n");
     fflush(stdin);
     fgets(s, N, stdin);
+
+    printf("Ingrese secuencia secuencia:\n");
+    fflush(stdin);
+    fgets(t, N, stdin);
 
     my_strcat(t, s);
 
@@ -39,12 +43,16 @@ int main()
 //Probar después de corregir el 6
 void my_strcat (char *t, const char *s)
 {   
-    //Si el largo del vector apuntado es menor a la longitud de la cadena t + la cadena s
-    if (sizeof(t) < (strlen(t) + strlen(s)))
-        printf("Los Strings tienen diferente tamaño\n");
-    else
-    {
-        for (int i = strlen(t); i < strlen(s); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
+    // //Si el largo del vector apuntado es menor a la longitud de la cadena t + la cadena s
+    // if (sizeof(t) < (strlen(t) + strlen(s)))
+    //     printf("Los Strings tienen diferente tamaño\n");
+    // else
+    // {
+        int ta = strlen(t);
+        int sa = strlen(s);
+        char a = s[3];
+
+        for (int i = strlen(t)-1; i < strlen(s) + strlen(t); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
             t[i] = s[i-strlen(t)];      //Guardo el valor desplazado, 0-1-2-3-etc
-    }
+    // }
 }
