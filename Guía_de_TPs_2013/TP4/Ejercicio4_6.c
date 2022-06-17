@@ -6,6 +6,10 @@ Nota: ¿Donde deben tomarse los recaudos para que el puntero destino posea la me
 en su función especifique donde y como se debe salvar esta situación, mediante un comentario en el
 encabezado de su programa fuente. */
 
+//No se puede conocer el tamaño del vector en la fucnion ya que es pasado como puntero
+//Para evitar el error se deben declarar ambos vectores de igual longitud o modificar el prototipo para
+//pasarle a la función el tamaño del vector
+
 #include <stdio.h>
 
 #define N 20
@@ -22,8 +26,8 @@ int main()
     fflush(stdin);
     fgets(s, N, stdin);
 
-    printf("%d\n", sizeof(s));
-    printf("%d\n", sizeof(t));
+    // printf("%d\n", sizeof(s));
+    // printf("%d\n", sizeof(t));
 
     my_strcpy(t, s);
 
@@ -37,20 +41,20 @@ int main()
 
 void my_strcpy (char *t, const char *s)
 {
-    //Recibe el string hasta donde se ocupo, por eso siempre son iguales
-    printf("%d\n", sizeof(s));
-    printf("%d\n", sizeof(t));
+    //Devuelve el sizeof del puntero, no del vector
+    // printf("%d\n", sizeof(s));
+    // printf("%d\n", sizeof(t));
 
     // char se[] = s;
     // char te[] = t;
 
-    if (sizeof(t) != sizeof(s))
-        printf("Los Strings tienen diferente tamaño\n");
-    else
-    {
-        for (int i = 0; i < sizeof(t); i++)     //Copia toda la cadena (incluso después del NULL)
+    // if (sizeof(t) != sizeof(s))
+    //     printf("Los Strings tienen diferente tamaño\n");
+    // else
+    // {
+        for (int i = 0; i != NULL; i++)     //Copia toda la cadena
             t[i] = s[i];
-    }
+    //}
 }
 
 /* Error:  (Presentacion clase 6, diapositiva: columna 1 fila 7)

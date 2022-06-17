@@ -29,7 +29,7 @@ int main()
 
 //Si la cadena está vacía su primer caracter sera el NULL
 bool emptyString(const char *string)
-{
+{                  //'\0'
     if (string[0] == NULL || string[0] == '\n')
         return true;
     else
