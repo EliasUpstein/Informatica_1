@@ -21,7 +21,7 @@ encabezado de su programa fuente. */
 #define M 25
 
 void my_strcat (char *t, const char *s);
-int my_strlen(const char *);
+// int my_strlen(const char *);
 
 int main()
 {
@@ -50,7 +50,7 @@ void my_strcat (char *t, const char *s)
 {   
     // //Si el largo del vector apuntado es menor a la longitud de la cadena t + la cadena s
 
-    int aux = my_strlen(t);
+    // int aux = my_strlen(t);
     //Si el largo del vector apuntado es menor a la longitud de la cadena t + la cadena s
     // if (sizeof(t) < (strlen(t) + strlen(s)))
     //     printf("Los Strings tienen diferente tamaño\n");
@@ -60,22 +60,23 @@ void my_strcat (char *t, const char *s)
         int sa = strlen(s);
         char a = s[3];
 
+        //chequear
         for (int i = strlen(t)-1; i < strlen(s) + strlen(t); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
-            t[i] = s[i-strlen(t)];      //Guardo el valor desplazado, 0-1-2-3-etc
+            t[i] = s[i- (int) strlen(t)];      //Guardo el valor desplazado, 0-1-2-3-etc
     // }
 
-        for (int i = aux; i < my_strlen(s); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
-            t[i] = s[i-aux];      //Guardo el valor desplazado, 0-1-2-3-etc
+        // for (int i = aux; i < my_strlen(s); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
+        //     t[i] = s[i-aux];      //Guardo el valor desplazado, 0-1-2-3-etc
     // }
 }
 
-int my_strlen(const char *string)
-{
-    int i = 0;
+// int my_strlen(const char *string)
+// {
+//     int i = 0;
 
-    while (string[i] != NULL)   //Mientras el caracter sea distinto del fin del string
-        i++;
+//     while (string[i] != NULL)   //Mientras el caracter sea distinto del fin del string
+//         i++;
     
-    return i;   //Contabiliza el \n
-}
+//     return i;   //Contabiliza el \n
+// }
 
