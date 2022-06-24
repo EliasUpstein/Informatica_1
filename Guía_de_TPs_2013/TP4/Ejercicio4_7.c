@@ -32,8 +32,10 @@ int main()
     fflush(stdin);
     fgets(s, N, stdin);
 
-    printf("Ingrese secuencia secuencia:\n");
+    printf("Ingrese la segunda secuencia:\n");
     fflush(stdin);
+    // char ch;
+    // while((ch = getchar()) != '\n' && ch != EOF);       //Temirna de limpiar el buffer si quedó sucio de s
     fgets(t, N, stdin);
 
     my_strcat(t, s);
@@ -47,28 +49,39 @@ int main()
 }
 
 void my_strcat (char *t, const char *s)
-{   
-    // //Si el largo del vector apuntado es menor a la longitud de la cadena t + la cadena s
-
-    // int aux = my_strlen(t);
-    //Si el largo del vector apuntado es menor a la longitud de la cadena t + la cadena s
-    // if (sizeof(t) < (strlen(t) + strlen(s)))
-    //     printf("Los Strings tienen diferente tamaño\n");
-    // else
-    // {
-        int ta = strlen(t);
-        int sa = strlen(s);
-        char a = s[3];
-
-        //chequear
-        for (int i = strlen(t)-1; i < strlen(s) + strlen(t); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
-            t[i] = s[i- (int) strlen(t)];      //Guardo el valor desplazado, 0-1-2-3-etc
-    // }
-
-        // for (int i = aux; i < my_strlen(s); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
-        //     t[i] = s[i-aux];      //Guardo el valor desplazado, 0-1-2-3-etc
-    // }
+{ 
+    int i, j;
+    for (i = 0, j = strlen(t)-1; i < strlen(s) || j == M; i++, j++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
+            t[j] = s[i]; 
+    //Copia sobreescribiendo el \0 de t (en strlen(t))
+    //Loopea hasta el largo de s o encontrar el final del vector (no óptimo)
 }
+
+
+//Borrador
+// void my_strcat (char *t, const char *s)
+// {   
+//     // //Si el largo del vector apuntado es menor a la longitud de la cadena t + la cadena s
+
+//     // int aux = my_strlen(t);
+//     //Si el largo del vector apuntado es menor a la longitud de la cadena t + la cadena s
+//     // if (sizeof(t) < (strlen(t) + strlen(s)))
+//     //     printf("Los Strings tienen diferente tamaño\n");
+//     // else
+//     // {
+//         int ta = strlen(t);
+//         int sa = strlen(s);
+//         char a = s[3];
+
+//         //chequear
+//         for (int i = strlen(t)-1; i < strlen(s) + strlen(t); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
+//             t[i] = s[i- (int) strlen(t)];      //Guardo el valor desplazado, 0-1-2-3-etc
+//     // }
+
+//         // for (int i = aux; i < my_strlen(s); i++)  //Copia sobreescribiendo el \0 de t (en strlen(t))
+//         //     t[i] = s[i-aux];      //Guardo el valor desplazado, 0-1-2-3-etc
+//     // }
+// }
 
 // int my_strlen(const char *string)
 // {

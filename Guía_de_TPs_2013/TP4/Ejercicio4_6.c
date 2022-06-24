@@ -52,7 +52,7 @@ void my_strcpy (char *t, const char *s)
     //     printf("Los Strings tienen diferente tamaño\n");
     // else
     // {
-        for (int i = 0; i != NULL; i++)     //Copia toda la cadena
+        for (int i = 0; s[i] != '\0'; i++)     //Copia hasta que encuentra el \0 (fin de cadena)
             t[i] = s[i];
     //}
 }
