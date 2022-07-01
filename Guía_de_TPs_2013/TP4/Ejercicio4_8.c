@@ -15,17 +15,17 @@ int my_strcmp(const char *t, const char *s);
 
 int main()
 {
-    char s[N];
-    char t[M];
+    char t[N];
+    char s[M];
     int cmp = 0;
 
     printf("Ingrese la primer secuencia:\n");
     fflush(stdin);
-    fgets(s, N, stdin);
+    fgets(t, N, stdin);
 
     printf("Ingrese la segunda secuencia:\n");
     fflush(stdin);
-    fgets(t, M, stdin);
+    fgets(s, M, stdin);
 
     // switch(my_strcmp(t,s))
     // {
@@ -59,9 +59,14 @@ int main()
 int my_strcmp(const char *t,const char *s)
 {
     int res = 0;
-    for (int i = 0; res != 0 && i < strlen(t) && i < strlen(s); i++)
-        res = (int) t[i] - s[i];
-
+    if(strlen(s)==strlen(t))    //Ambas cadenas tienen la misma longitud
+	{
+        for (int i = 0; res == 0 && i < strlen(t); i++)     //Itera hasta el fin de cadena o el primer caracter distinto
+            res = (int) t[i] - s[i];                        //Realiza la diferencia entre los valores ASCII de los carateres
+    }
+    else
+        res = strlen(t) - strlen(s);                        //Si las cadenas tienen distinto tamaño no compara caracteres sino el largo
+    
     return res;
 }
 
