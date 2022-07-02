@@ -28,19 +28,15 @@ int main(int cantArg, char *args[])
                 direc[i] = strtok(NULL, caracter);   //Guardo la dirección del resto de dígitos
                 direcent[i] = atoi(direc[i]);    //Convierto a entero el string de la direccion
             }
-
             for (int j = 0; j < IP; j++)
             {
-                printf("La dirección IP es:\n");
-
-                if (direcent[j] >= 0 && direcent[i] <= 255)
-                    printf("%d.", direcent[j]);
-                else
+                if (direcent[j] < 0 && direcent[i] > 255)
                 {
                     printf("Dirección inválida\n");
-                    break;
+                    return 0;
                 }
             }
+            printf("Dirección válida\n");
         }
         else
             printf("Dirección inválida\n");
@@ -48,6 +44,6 @@ int main(int cantArg, char *args[])
     else
         printf("No se ha especificado una dirección IP\n");
 
-    system("pause");
+    //system("pause");
     return 0;
 }
