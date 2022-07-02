@@ -47,7 +47,7 @@ int validarFecha(const char *fecha)
         if (atoi(fecha_cortada) < 1 || atoi(fecha_cortada) > 12)
             aux = 0;
 
-        //Año
+        //Añoz
         fecha_cortada = strtok(NULL, barra);
         if (atoi(fecha_cortada) < 1900 || atoi(fecha_cortada) > 2100)
             aux = 0;

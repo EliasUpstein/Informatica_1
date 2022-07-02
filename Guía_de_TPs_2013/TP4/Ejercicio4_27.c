@@ -8,7 +8,8 @@ dirección de correo electrónico, y como número de tarjeta de crédito. */
 
 #define N 40
 
-int IP(char *s);
+int ip(char *s);
+int correo(char *s);
 
 int main(void)
 {
@@ -17,27 +18,33 @@ int main(void)
 	setbuf(stdin,NULL);
 	fgets(s,N,stdin);
 
+	if (ip(s) == 0)
+	{
+		if (correo(s) == 0)		//Si no valida ninguna función
+			printf("La cadena ingresada es inválida");
+		else
+			printf("El correo ingresado es válido.\n");
+	}
+	else
+		printf("La dirección IP es válida.\n");
 	
-
 	return 0;
 }
 
-int IP(char *s)     //Revisar
+int ip(char *s)     //Revisar
 {
 	int i;
 	char p[2] = ".";
 	int token[4];
-	if(strchr(s,' ') == NULL) //Verifica que la cadena no tenga espacios con la funcion (strchr)
+	if(strchr(s,' ') == NULL) //Verifica que la cadena no tenga espacios
 	{	
 		token[0] = atoi(strtok(s,p));
 		for(i = 1; i < 4; i++)
-		{
 			token[i] = atoi(strtok(NULL,p));
-		}
 		i=0;
 		for(i = 0; i < 4; i++)
 		{
-			if(token[i]<0 || token[i]>=256)
+			if(token[i]<0 || token[i]>255)
 				return 0;
 		}
 		return 1;
@@ -45,7 +52,7 @@ int IP(char *s)     //Revisar
 	return 0;
 }
 
-int Correo(char *s)
+int correo(char *s)
 {
 	if(strchr(s,'@') != NULL && strchr(s,'.') != NULL) //verifico que la cadena tenga un @ y un .
         return 1;
