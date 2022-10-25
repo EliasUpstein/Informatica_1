@@ -19,12 +19,12 @@ int main()
     int aux = 0;
     int countp = 1, countd = 0;
 
-    int fd = open("archivo2.txt", O_RDONLY);
+    int fd = open("diodo.txt", O_RDONLY);
     
 	aux = read(fd, texto, N);
     do
     {
-		texto[aux-1]=0;
+		//texto[aux-1]=0;
 		printf("%s\n",texto);
 
         for (int i = 0; i < strlen(texto); i++)

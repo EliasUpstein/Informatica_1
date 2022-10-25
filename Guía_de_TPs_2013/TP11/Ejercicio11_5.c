@@ -10,3 +10,48 @@ Al retornar de la función, el uso de esos parámetros (mediante argc y argv)
 deberá poderse realizar de la misma forma que al leer los parámetros de línea de
 comandos. */
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+
+#define N 100
+
+int read_parameters( char * filename, char ** arguments)
+{
+    char buf[N];
+    char * aux[N];
+	int cant;
+    int parameters = 0;
+    int fd = open("arguments.txt", O_RDONLY);
+
+    //cant=read(fd, buf, N);
+
+    do 
+    {
+        cant=read(fd, buf, N);
+
+        //Busca los espacios y guarda el puntero a la palabra siguiente. Cuenta tambíen los argumentos
+        for (int i = 0; i < strlen(buf); i++)
+        {
+            if(texto[i] == ' ' && texto[i+1] != ' ' && texto[i+1] != '\0')
+            {
+                aux[parameters] = texto[i+1];
+                parameters++;
+            }
+        }
+	
+        //Por cada argumento encontrado lo copia al vecto
+        for(int i = 0; i < parameters; i++)
+        {
+            strcpy(arguments[i], aux[i]);
+        }
+
+	} while (cant!=0);
+
+    close(fd);
+
+    return parameters;
+}
